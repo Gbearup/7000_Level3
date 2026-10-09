@@ -338,7 +338,37 @@ function loadQuestion() {
 
 function checkChoiceAnswer(selected) {
     const isCorrect = (selected === currentQuestionData.definition || selected === currentQuestionData.vocab);
-    handleAnswerResult(isCorrect);
+    const fb = document.getElementById('quizFeedback');
+    
+    // 禁用所有選項按鈕，防止重複點擊
+    const buttons = document.querySelectorAll('.option-btn');
+    buttons.forEach(btn => {
+        btn.disabled = true;
+        // 比對按鈕文字（去除前後空白），標示出正確與錯誤的樣式
+        const btnText = btn.innerText.trim();
+        const targetVal = (currentQuestionData.definition || currentQuestionData.vocab).trim();
+        
+        if (btnText === targetVal || btnText.includes(targetVal)) {
+            btn.classList.add('correct-answer');
+        } else if (btnText === selected.trim() || btnText.includes(selected.trim())) {
+            btn.classList.add('wrong-answer');
+        }
+    });
+
+    if (isCorrect) {
+        score++;
+        fb.innerText = '答對了！太棒了！';
+        fb.className = 'feedback correct';
+        playSound('correct');
+    } else {
+        fb.innerText = `答錯了！正確答案是：${currentQuestionData.vocab} (${currentQuestionData.definition})`;
+        fb.className = 'feedback incorrect';
+        playSound('incorrect');
+        addMistake(currentQuestionData);
+    }
+
+    document.getElementById('quizScore').innerText = `得分：${score}`;
+    document.getElementById('nextBtn').style.display = 'inline-block';
 }
 
 function submitSpellAnswer() {
