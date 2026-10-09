@@ -60,7 +60,7 @@ h1 {
     margin-bottom: 32px;
     background: #f8fafc;
     padding: 8px;
-    border-radius: 50px;
+    border-radius: 16px;
     border: 1px solid var(--border-color);
     width: fit-content;
 }
@@ -73,7 +73,7 @@ h1 {
     font-weight: 600;
     color: var(--text-muted);
     cursor: pointer;
-    border-radius: 50px;
+    border-radius: 16px;
     transition: all 0.25s ease;
 }
 
