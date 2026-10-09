@@ -60,7 +60,7 @@ h1 {
     margin-bottom: 32px;
     background: #f8fafc;
     padding: 8px;
-    border-radius: 16px;
+    border-radius: 50px;
     border: 1px solid var(--border-color);
     width: fit-content;
 }
@@ -73,7 +73,7 @@ h1 {
     font-weight: 600;
     color: var(--text-muted);
     cursor: pointer;
-    border-radius: 16px;
+    border-radius: 50px;
     transition: all 0.25s ease;
 }
 
@@ -450,4 +450,28 @@ tr:last-child td {
 .speak-btn-inline:hover {
     background: var(--primary, #6366f1);
     transform: scale(1.1);
+}
+
+.option-btn.correct-answer {
+    background-color: #d1fae5 !important;
+    border-color: #10b981 !important;
+    color: #065f46 !important;
+}
+.option-btn.correct-answer::after {
+    content: "正確答案";
+    float: right;
+    color: #10b981;
+    font-weight: bold;
+}
+
+.option-btn.wrong-answer {
+    background-color: #fee2e2 !important;
+    border-color: #ef4444 !important;
+    color: #991b1b !important;
+}
+.option-btn.wrong-answer::after {
+    content: "✕ 錯誤";
+    float: right;
+    color: #ef4444;
+    font-weight: bold;
 }
